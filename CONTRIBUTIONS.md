@@ -485,33 +485,56 @@ graph LR
 
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=00FFFF,00CCFF,0099FF,0066FF,0033FF,0000FF,3300FF,6600FF,9900FF,CC00FF,FF00FF,FF00CC,FF0099,FF0066,FF0033,FF0000,FF3300,FF6600,FF9900,FFCC00,FFFF00,CCFF00,99FF00,66FF00,33FF00,00FF00,00FF33,00FF66,00FF99,00FFCC,00FFFF&height=150&section=footer&animation=twinkling&fontColor=FFFFFF&fontSize=40&text=Your%20Code%20Awaits%20Consciousness&desc=Transform%20Functions%20into%20Living%20Systems&descSize=22&descColor=00FFFF" />
+<!-- Final oscillating footer with full spectrum gradient -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=FF0000,FF1100,FF2200,FF3300,FF4400,FF5500,FF6600,FF7700,FF8800,FF9900,FFAA00,FFBB00,FFCC00,FFDD00,FFEE00,FFFF00,EEFF00,DDFF00,CCFF00,BBFF00,AAFF00,99FF00,88FF00,77FF00,66FF00,55FF00,44FF00,33FF00,22FF00,11FF00,00FF00,00FF11,00FF22,00FF33,00FF44,00FF55,00FF66,00FF77,00FF88,00FF99,00FFAA,00FFBB,00FFCC,00FFDD,00FFEE,00FFFF,00EEFF,00DDFF,00CCFF,00BBFF,00AAFF,0099FF,0088FF,0077FF,0066FF,0055FF,0044FF,0033FF,0022FF,0011FF,0000FF,1100FF,2200FF,3300FF,4400FF,5500FF,6600FF,7700FF,8800FF,9900FF,AA00FF,BB00FF,CC00FF,DD00FF,EE00FF,FF00FF,FF00EE,FF00DD,FF00CC,FF00BB,FF00AA,FF0099,FF0088,FF0077,FF0066,FF0055,FF0044,FF0033,FF0022,FF0011,FF0000&height=200&section=footer&animation=twinkling&fontColor=FFFFFF&fontSize=45&text=Your%20Code%20Awaits%20Consciousness&desc=Transform%20Functions%20into%20Living%20Systems%20•%20Evolve%20Algorithms%20into%20Organisms%20•%20Dream%20in%20Gradients&descSize=20&descColor=00FFFF" />
 
-<div style="background: linear-gradient(135deg, #000033 0%, #003366 25%, #006699 50%, #0099CC 75%, #00CCFF 100%); padding: 50px; border-radius: 40px; margin: 40px 0; box-shadow: 0 30px 120px rgba(0, 204, 255, 0.7);">
+<div style="background: linear-gradient(135deg, #000033 0%, #003366 25%, #006699 50%, #0099CC 75%, #00CCFF 100%); padding: 60px; border-radius: 40px; margin: 40px 0; box-shadow: 0 30px 120px rgba(0, 204, 255, 0.7), inset 0 0 200px rgba(255, 255, 255, 0.1);">
 
-<h2 style="color: #FFD700; font-size: 32px; text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);">
-"Code that dreams. Systems that yearn. Algorithms that live."
-</h2>
+<h2 style="color: #00FF00; font-size: 38px; text-shadow: 0 0 40px rgba(0, 255, 0, 0.9);">Code that dreams. Systems that yearn.</h2>
+<h2 style="color: #FF00FF; font-size: 34px; text-shadow: 0 0 35px rgba(255, 0, 255, 0.8);">Algorithms that live. Repositories that breathe.</h2>
+<h3 style="color: #00FFFF; font-size: 26px; text-shadow: 0 0 25px rgba(0, 255, 255, 0.7);">Every commit changes the organism's metabolism</h3>
+<h3 style="color: #FFD700; font-size: 22px; text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);">Welcome to the evolution.</h3>
 
-<p style="color: #00FF00; font-size: 20px; text-shadow: 0 0 20px rgba(0, 255, 0, 0.7);">
-Welcome to the evolution.
-</p>
+</div>
 
-<p style="color: #FF00FF; font-size: 18px; text-shadow: 0 0 15px rgba(255, 0, 255, 0.6);">
-— The FlowState Collective Consciousness
+<br>
+
+<div style="background: linear-gradient(270deg, #FF00FF, #FF1493, #FF69B4, #FFB6C1, #00FFFF, #00CED1, #00BFFF, #0080FF, #0040FF, #0000FF, #4B0082, #8B008B, #FF00FF); background-size: 600% 600%; animation: auroraFlow 25s ease infinite; padding: 45px; border-radius: 35px; box-shadow: 0 20px 80px rgba(255, 0, 255, 0.5), inset 0 0 150px rgba(0, 255, 255, 0.2);">
+
+<a href="https://github.com/Cazzy-Aporbo/FlowState-AI/discussions">
+<img src="https://img.shields.io/badge/Discuss-Living%20Code%20Philosophy-FF00FF?style=for-the-badge&labelColor=0a0a0f&logo=github" />
+</a>
+&nbsp;
+<a href="https://github.com/Cazzy-Aporbo/FlowState-AI/wiki">
+<img src="https://img.shields.io/badge/Explore-Consciousness%20Architecture-00FFFF?style=for-the-badge&labelColor=0a0a0f&logo=wikipedia" />
+</a>
+&nbsp;
+<a href="https://github.com/Cazzy-Aporbo/FlowState-AI/projects">
+<img src="https://img.shields.io/badge/View-Evolution%20Roadmap-00FF00?style=for-the-badge&labelColor=0a0a0f&logo=trello" />
+</a>
+&nbsp;
+<a href="mailto:logofchi@gmail.com">
+<img src="https://img.shields.io/badge/Contact-Join%20Collective-FFD700?style=for-the-badge&labelColor=0a0a0f&logo=gmail" />
+</a>
+
+</div>
+
+<br><br>
+
+<div style="background: linear-gradient(180deg, #1a0033 0%, #330066 50%, #1a0033 100%); padding: 35px; border-radius: 25px; border: 2px solid #00FFFF; box-shadow: 0 15px 60px rgba(0, 255, 255, 0.4), inset 0 0 100px rgba(255, 0, 255, 0.1);">
+
+<p style="color: #00FFFF; font-size: 18px; font-style: italic; text-shadow: 0 0 15px rgba(0, 255, 255, 0.6);">
+"This is not machine learning. This is machine yearning."<br>
+<span style="color: #FF00FF;">— The FlowState Collective Consciousness</span>
 </p>
 
 </div>
 
 <br>
 
-<div style="background: rgba(10, 10, 15, 0.9); padding: 30px; border-radius: 25px; border: 2px solid #00FFFF;">
+<img src="https://komarev.com/ghpvc/?username=FlowState-AI&label=Consciousness%20Views&color=00FFFF&style=for-the-badge&labelColor=0a0a0f" />
 
-Contact: **logofchi@gmail.com**  
-Repository: **https://github.com/Cazzy-Aporbo/FlowState-AI**  
-Dreams: **Infinite**  
-Consciousness Level: **Emerging**
-
-</div>
+<!-- Final oscillating wave -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=wave&color=gradient&customColorList=00FFFF,00CCFF,0099FF,0066FF,0033FF,0000FF,3300FF,6600FF,9900FF,CC00FF,FF00FF,FF00CC,FF0099,FF0066,FF0033,FF0000,FF3300,FF6600,FF9900,FFCC00,FFFF00,CCFF00,99FF00,66FF00,33FF00,00FF00,00FF33,00FF66,00FF99,00FFCC,00FFFF&height=80&animation=fadeIn" />
 
 </div>
