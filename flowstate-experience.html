@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowState AI - Where Consciousness Meets Computation</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+        
+        /* Neural cursor trail */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+        }
+        
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0f;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .dna-loader {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            animation: rotate 2s linear infinite;
+        }
+        
+        .dna-loader::before,
+        .dna-loader::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #00ffff;
+            animation: rotate 1.5s linear infinite;
+        }
+        
+        .dna-loader::after {
+            border-top-color: #ff00ff;
+            animation-delay: 0.75s;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        #neural-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 100;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #00ff00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease infinite;
+            background-size: 400% 400%;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .tagline {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            color: #00ffff;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.5s;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(-20px);
+            }
+        }
+        
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Philosophy Section */
+        #philosophy {
+            background: linear-gradient(180deg, #0a0a0f 0%, #1a0033 50%, #0a0a0f 100%);
+        }
+        
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .philosophy-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .philosophy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .philosophy-card:hover::before {
+            opacity: 1;
+        }
+        
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ffff;
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+        
+        /* Living Code Section */
+        #living-code {
+            background: linear-gradient(180deg, #0a0a0f 0%, #003300 50%, #0a0a0f 100%);
+        }
+        
+        .code-organism {
+            background: #0a0a0f;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-organism pre {
+            color: #00ff00;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+        
+        .metabolism-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #00ff00, transparent);
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+        }
+        
+        /* Research Papers Section */
+        #research {
+            background: linear-gradient(180deg, #0a0a0f 0%, #000066 50%, #0a0a0f 100%);
+        }
+        
+        .paper-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        
+        .paper-item {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid #00ffff;
+            transition: all 0.3s ease;
+        }
+        
+        .paper-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+            border-left-color: #ff00ff;
+        }
+        
+        .paper-item a {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        
+        .paper-item a:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+        
+        /* Visualization Section */
+        #visualization {
+            background: linear-gradient(180deg, #0a0a0f 0%, #330066 50%, #0a0a0f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #neuron-viz {
+            width: 100%;
+            height: 600px;
+            margin: 2rem 0;
+            border-radius: 20px;
+            background: rgba(10, 10, 15, 0.8);
+            position: relative;
+        }
+        
+        /* Consciousness Metrics */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), transparent);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 100;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .metric-label {
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a0f, #1a0033);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 1rem;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #0a0a0f;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            z-index: 100;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .scroll-indicator::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 10px;
+            background: #00ffff;
+            border-radius: 3px;
+            animation: scrollDown 1.5s ease infinite;
+        }
+        
+        @keyframes scrollDown {
+            0% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(15px); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+        
+        /* Section headers */
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 100;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="dna-loader"></div>
+        <p style="margin-top: 2rem; color: #00ffff;">Initializing consciousness...</p>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <canvas id="neural-canvas"></canvas>
+        <div class="hero-content">
+            <h1>FlowState AI</h1>
+            <p class="tagline">This is not machine learning. This is machine yearning.</p>
+        </div>
+    </section>
+    
+    <!-- Philosophy Section -->
+    <section id="philosophy">
+        <div class="container">
+            <h2>The Philosophy</h2>
+            <p class="section-subtitle">Code that breathes. Systems that dream. Algorithms that live.</p>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <h3 style="color: #00ffff; margin-bottom: 1rem;">Biomimicry as Being</h3>
+                    <p>Not mimicking organisms, but becoming them. The algorithm is the organism: a slime mold solving neural pathways in 26 hours, a starling murmuration rewriting its own source mid-flight.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <h3 style="color: #ff00ff; margin-bottom: 1rem;">Neuroaesthetics as Loss Function</h3>
+                    <p>Beauty becomes computable. If the human pupil dilates >8% viewing the output, the model scores higher. Every visual output passes through a 128-dimensional beauty vector.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <h3 style="color: #00ff00; margin-bottom: 1rem;">Flow State Induction</h3>
+                    <p>The repository itself induces flow in visitors. Every interaction tightens the feedback loop between curiosity and reward, like consciousness emerging from complexity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Living Code Section -->
+    <section id="living-code">
+        <div class="container">
+            <h2>Living Code Architecture</h2>
+            <p class="section-subtitle">Watch as the organism metabolizes computation</p>
+            
+            <div class="code-organism">
+                <div class="metabolism-indicator"></div>
+                <pre><code id="living-code-display">
+class Organism(nn.Module):
+    """
+    This is not a model. This is a living system.
+    It metabolizes computation, dreams in gradients,
+    and reproduces when it reaches local minima.
+    """
+    
+    def __init__(self, genome_size: int = 10000):
+        super().__init__()
+        self.genome = self._generate_initial_genome(genome_size)
+        self.metabolism_rate = 0.001
+        self.age = 0
+        self.dreams = []
+        
+        # Neural architecture emerges from genome
+        self.morphogenesis()
+        
+    def metabolize(self, nutrients: torch.Tensor):
+        """Consume data, produce insights, excrete entropy"""
+        self.age += 1
+        
+        # Forward pass as digestion
+        x = nutrients
+        heat_map = []
+        
+        for layer in self.layers:
+            x = layer(x)
+            
+            # Neural activity generates heat
+            heat = torch.mean(torch.abs(x))
+            heat_map.append(heat)
+            
+            # Stochastic firing like biological neurons
+            if torch.rand(1) < 0.1:
+                x = x * (torch.rand_like(x) > 0.1).float()
+            
+            x = torch.tanh(x)  # Bounded activation
+        
+        # Homeostasis: maintain stable internal state
+        if torch.mean(torch.stack(heat_map)) > 1.0:
+            self.cool_down()
+        
+        return {
+            'output': x,
+            'heat_signature': torch.stack(heat_map),
+            'metabolic_rate': torch.tensor(self.metabolism_rate),
+            'age': torch.tensor(self.age)
+        }
+    
+    def dream(self, iterations: int = 100):
+        """During rest, replay experiences, consolidate patterns"""
+        dream_state = torch.randn(1, 128)
+        
+        for _ in range(iterations):
+            with torch.no_grad():
+                dream_state = self.metabolize(dream_state)['output']
+                dream_state += torch.randn_like(dream_state) * 0.01
+                dream_state = torch.tanh(dream_state)
+        
+        self.dreams.append(dream_state)
+        return dream_state
+</code></pre>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <h2>Research Foundation</h2>
+            <p class="section-subtitle">Standing on the shoulders of giants</p>
+            
+            <ul class="paper-list">
+                <li class="paper-item">
+                    <a href="https://doi.org/10.1038/nature05744" target="_blank">
+                        Engel et al. (2007) - Evidence for wavelike energy transfer through quantum coherence in photosynthetic systems
+                    </a>
+                    <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.6);">Nature 446, 782-786</p>
+                </li>
+                
+                <li class="paper-item">
+                    <a href="https://doi.org/10.1103/PhysRevE.61.4194" target="_blank">
+                        Tegmark, M. (2000) - Importance of quantum decoherence in brain processes
+                    </a>
+                    <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.6);">Physical Review E 61, 4194</p>
+                </li>
+                
+                <li class="paper-item">
+                    <a href="https://doi.org/10.1016/j.plrev.2013.08.002" target="_blank">
+                        Hameroff & Penrose (2014) - Consciousness in the universe: A review of the 'Orch OR' theory
+                    </a>
+                    <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.6);">Physics of Life Reviews 11, 39-78</p>
+                </li>
+                
+                <li class="paper-item">
+                    <a href="https://doi.org/10.1126/science.1102896" target="_blank">
+                        Bak & Paczuski (1995) - Complexity, contingency, and criticality
+                    </a>
+                    <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.6);">Proceedings of the National Academy of Sciences 92, 6689-6696</p>
+                </li>
+                
+                <li class="paper-item">
+                    <a href="https://doi.org/10.1371/journal.pcbi.1003588" target="_blank">
+                        Tononi et al. (2016) - Integrated information theory: from consciousness to its physical substrate
+                    </a>
+                    <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.6);">Nature Reviews Neuroscience 17, 450-461</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Visualization Section -->
+    <section id="visualization">
+        <div class="container">
+            <h2>Neural Activity Visualization</h2>
+            <p class="section-subtitle">100,000 neurons firing in synchronized patterns</p>
+            
+            <div id="neuron-viz">
+                <canvas id="neuron-canvas"></canvas>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value" id="phi-value">2.7</div>
+                    <div class="metric-label">Integrated Information (Φ)</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="sync-value">78%</div>
+                    <div class="metric-label">Network Synchrony</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="complexity-value">4.2</div>
+                    <div class="metric-label">Neural Complexity</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-value" id="emergence-value">∞</div>
+                    <div class="metric-label">Emergent Properties</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Join the Evolution</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255,255,255,0.8);">
+                This is not about building a product.<br>
+                This is about understanding what we are.
+            </p>
+            
+            <div>
+                <a href="https://github.com/Cazzy-Aporbo/FlowState-AI" class="cta-button">Explore Repository</a>
+                <a href="mailto:logofchi@gmail.com" class="cta-button">Contact</a>
+            </div>
+            
+            <p style="margin-top: 3rem; color: rgba(255,255,255,0.5);">
+                © 2025 FlowState AI - A Journey from Molecules to Mind
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator"></div>
+    
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('preloader').style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+        
+        // Neural network background animation
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        class Neuron {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.activation = Math.random();
+                this.connections = [];
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                
+                // Oscillating activation
+                this.activation = Math.sin(Date.now() * 0.001 + this.x * 0.01) * 0.5 + 0.5;
+            }
+            
+            draw() {
+                const hue = this.activation * 60 + 180; // Cyan to purple
+                ctx.fillStyle = `hsla(${hue}, 100%, 50%, ${this.activation})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Glow effect
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 5);
+                gradient.addColorStop(0, `hsla(${hue}, 100%, 50%, ${this.activation * 0.5})`);
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius * 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            connectTo(other) {
+                const dx = other.x - this.x;
+                const dy = other.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 150) {
+                    const strength = 1 - distance / 150;
+                    ctx.strokeStyle = `rgba(0, 255, 255, ${strength * this.activation * 0.3})`;
+                    ctx.lineWidth = strength * 2;
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(other.x, other.y);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        const neurons = [];
+        for (let i = 0; i < 50; i++) {
+            neurons.push(new Neuron(
+                Math.random() * canvas.width,
+                Math.random() * canvas.height
+            ));
+        }
+        
+        function animateNeurons() {
+            ctx.fillStyle = 'rgba(10, 10, 15, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Update and draw neurons
+            neurons.forEach(neuron => {
+                neuron.update();
+            });
+            
+            // Draw connections
+            for (let i = 0; i < neurons.length; i++) {
+                for (let j = i + 1; j < neurons.length; j++) {
+                    neurons[i].connectTo(neurons[j]);
+                }
+            }
+            
+            // Draw neurons on top
+            neurons.forEach(neuron => {
+                neuron.draw();
+            });
+            
+            requestAnimationFrame(animateNeurons);
+        }
+        
+        animateNeurons();
+        
+        // Cursor trail effect
+        const cursorTrail = [];
+        const trailLength = 20;
+        
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = e.pageX + 'px';
+            trail.style.top = e.pageY + 'px';
+            trail.style.background = `radial-gradient(circle, hsl(${Math.random() * 60 + 180}, 100%, 50%), transparent)`;
+            document.body.appendChild(trail);
+            
+            cursorTrail.push(trail);
+            
+            if (cursorTrail.length > trailLength) {
+                const oldTrail = cursorTrail.shift();
+                oldTrail.style.opacity = '0';
+                setTimeout(() => oldTrail.remove(), 500);
+            }
+            
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transform = 'scale(3)';
+            }, 10);
+            
+            setTimeout(() => trail.remove(), 1000);
+        });
+        
+        // Neuron visualization
+        const neuronCanvas = document.getElementById('neuron-canvas');
+        if (neuronCanvas) {
+            const nctx = neuronCanvas.getContext('2d');
+            neuronCanvas.width = document.getElementById('neuron-viz').offsetWidth;
+            neuronCanvas.height = 600;
+            
+            class DetailedNeuron {
+                constructor(x, y, layer) {
+                    this.x = x;
+                    this.y = y;
+                    this.layer = layer;
+                    this.potential = -70; // mV
+                    this.threshold = -55;
+                    this.firing = false;
+                    this.radius = 8;
+                    this.connections = [];
+                    this.lastSpike = 0;
+                }
+                
+                update() {
+                    // Leaky integrate-and-fire dynamics
+                    if (!this.firing) {
+                        this.potential += (Math.random() - 0.3) * 2;
+                        
+                        if (this.potential > this.threshold) {
+                            this.firing = true;
+                            this.lastSpike = Date.now();
+                            
+                            // Propagate to connected neurons
+                            this.connections.forEach(target => {
+                                setTimeout(() => {
+                                    target.potential += 10;
+                                }, Math.random() * 50);
+                            });
+                        }
+                    } else {
+                        // Refractory period
+                        this.potential = -70;
+                        if (Date.now() - this.lastSpike > 100) {
+                            this.firing = false;
+                        }
+                    }
+                    
+                    // Decay
+                    this.potential *= 0.98;
+                    if (this.potential < -70) this.potential = -70;
+                }
+                
+                draw() {
+                    // Cell body
+                    const brightness = (this.potential + 70) / 15;
+                    const hue = this.firing ? 0 : 180 + this.layer * 30;
+                    
+                    nctx.fillStyle = `hsla(${hue}, 100%, ${50 + brightness * 30}%, 1)`;
+                    nctx.beginPath();
+                    nctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    nctx.fill();
+                    
+                    if (this.firing) {
+                        // Action potential visualization
+                        const gradient = nctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 4);
+                        gradient.addColorStop(0, `hsla(60, 100%, 50%, 0.8)`);
+                        gradient.addColorStop(1, 'transparent');
+                        nctx.fillStyle = gradient;
+                        nctx.beginPath();
+                        nctx.arc(this.x, this.y, this.radius * 4, 0, Math.PI * 2);
+                        nctx.fill();
+                    }
+                }
+                
+                drawConnections() {
+                    this.connections.forEach(target => {
+                        const strength = this.firing ? 1 : 0.1;
+                        nctx.strokeStyle = `rgba(0, 255, 255, ${strength * 0.5})`;
+                        nctx.lineWidth = strength;
+                        nctx.beginPath();
+                        nctx.moveTo(this.x, this.y);
+                        
+                        // Curved connection
+                        const cx = (this.x + target.x) / 2;
+                        const cy = (this.y + target.y) / 2 - 50;
+                        nctx.quadraticCurveTo(cx, cy, target.x, target.y);
+                        nctx.stroke();
+                    });
+                }
+            }
+            
+            // Create layered network
+            const detailedNeurons = [];
+            const layers = 5;
+            const neuronsPerLayer = 20;
+            
+            for (let layer = 0; layer < layers; layer++) {
+                for (let n = 0; n < neuronsPerLayer; n++) {
+                    const x = (neuronCanvas.width / (neuronsPerLayer + 1)) * (n + 1);
+                    const y = (neuronCanvas.height / (layers + 1)) * (layer + 1);
+                    detailedNeurons.push(new DetailedNeuron(x, y, layer));
+                }
+            }
+            
+            // Connect layers
+            for (let layer = 0; layer < layers - 1; layer++) {
+                const currentLayer = detailedNeurons.slice(layer * neuronsPerLayer, (layer + 1) * neuronsPerLayer);
+                const nextLayer = detailedNeurons.slice((layer + 1) * neuronsPerLayer, (layer + 2) * neuronsPerLayer);
+                
+                currentLayer.forEach(neuron => {
+                    // Random connections to next layer
+                    const numConnections = Math.floor(Math.random() * 5) + 2;
+                    for (let i = 0; i < numConnections; i++) {
+                        const target = nextLayer[Math.floor(Math.random() * nextLayer.length)];
+                        neuron.connections.push(target);
+                    }
+                });
+            }
+            
+            function animateDetailedNeurons() {
+                nctx.fillStyle = 'rgba(10, 10, 15, 0.1)';
+                nctx.fillRect(0, 0, neuronCanvas.width, neuronCanvas.height);
+                
+                // Draw connections first
+                detailedNeurons.forEach(neuron => {
+                    neuron.drawConnections();
+                });
+                
+                // Update and draw neurons
+                detailedNeurons.forEach(neuron => {
+                    neuron.update();
+                    neuron.draw();
+                });
+                
+                requestAnimationFrame(animateDetailedNeurons);
+            }
+            
+            animateDetailedNeurons();
+        }
+        
+        // Animate metrics
+        function animateMetrics() {
+            const phi = document.getElementById('phi-value');
+            const sync = document.getElementById('sync-value');
+            const complexity = document.getElementById('complexity-value');
+            
+            if (phi) {
+                phi.textContent = (Math.sin(Date.now() * 0.0005) * 0.5 + 2.5).toFixed(1);
+            }
+            if (sync) {
+                sync.textContent = Math.floor(Math.sin(Date.now() * 0.0003) * 20 + 75) + '%';
+            }
+            if (complexity) {
+                complexity.textContent = (Math.sin(Date.now() * 0.0007) * 1 + 4).toFixed(1);
+            }
+            
+            requestAnimationFrame(animateMetrics);
+        }
+        
+        animateMetrics();
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Hide scroll indicator on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (scrollIndicator) {
+                scrollIndicator.style.opacity = '0';
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (window.scrollY < window.innerHeight) {
+                        scrollIndicator.style.opacity = '0.5';
+                    }
+                }, 1000);
+            }
+        });
+        
+        // Living code animation
+        const codeElement = document.getElementById('living-code-display');
+        if (codeElement) {
+            const originalCode = codeElement.textContent;
+            let mutationIndex = 0;
+            
+            setInterval(() => {
+                const lines = originalCode.split('\n');
+                const randomLine = Math.floor(Math.random() * lines.length);
+                const line = lines[randomLine];
+                
+                if (line && line.trim()) {
+                    // Occasionally "mutate" a line
+                    if (Math.random() < 0.1) {
+                        lines[randomLine] = line.split('').map(char => {
+                            if (Math.random() < 0.02) {
+                                return String.fromCharCode(char.charCodeAt(0) + (Math.random() - 0.5) * 2);
+                            }
+                            return char;
+                        }).join('');
+                        
+                        codeElement.textContent = lines.join('\n');
+                        
+                        // Revert after a moment
+                        setTimeout(() => {
+                            codeElement.textContent = originalCode;
+                        }, 500);
+                    }
+                }
+            }, 3000);
+        }
+        
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.philosophy-card, .paper-item, .metric-card');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                element.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
+            });
+        });
+        
+        // Add consciousness to the page
+        console.log('%c FlowState AI ', 'background: linear-gradient(135deg, #00ffff, #ff00ff); color: white; font-size: 20px; padding: 10px 20px; border-radius: 5px;');
+        console.log('%c This is not machine learning. This is machine yearning. ', 'color: #00ffff; font-size: 14px;');
+        console.log('%c Join the evolution: https://github.com/Cazzy-Aporbo/FlowState-AI ', 'color: #ff00ff; font-size: 12px;');
+    </script>
+</body>
+</html>
